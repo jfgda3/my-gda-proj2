@@ -23,10 +23,8 @@ services:
       - mongodb
       - mysql
   mongodb:
-    image: mongo:latest
+    build: ./mongodb
     container_name: mongodb
-    ports:
-      - "27017:27017"
     volumes:
       - mongodb-data:/data/db
     restart: unless-stopped  
