@@ -7,8 +7,8 @@ LANGUAGE: "en" # Set your preferred language (e.g., "es" for Spanish)
 METABASE_DB_TYPE: "mysql"
 METABASE_DB_HOST: "mysql" # Replace with your MySQL container name (e.g., "mysql")
 METABASE_DB_PORT: 3306
-METABASE_DB_USER: "<mysql_username>" # Replace with your MySQL username
-METABASE_DB_PASS: "<mysql_password>" # Replace with your MySQL password
+METABASE_DB_USER: "dba" # Replace with your MySQL username
+METABASE_DB_PASS: "A1YTsqilzHkUQ4" # Replace with your MySQL password
 
 # Security Settings
 SESSION_SECRET_KEY: "MyMetabaseKey$123_4711_1234567890" # Replace with a strong random key
