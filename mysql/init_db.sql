@@ -9,5 +9,5 @@ CREATE TABLE weather (
     temperature INT, 
     weather VARCHAR(255), 
     weather_desc VARCHAR(255)
-     
 );
+
