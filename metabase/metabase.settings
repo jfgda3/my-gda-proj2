@@ -19,4 +19,4 @@ X_FRAME_OPTIONS: "DENY"
 # BRAND_COLOR: "#007bff"
 
 # Disable tutorial for local development
-ENABLE_TUTORIAL: false
+# ENABLE_TUTORIAL: false
