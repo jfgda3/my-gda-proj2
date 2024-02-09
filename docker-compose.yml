@@ -29,7 +29,7 @@ services:
       - mongodb-data:/data/db
     restart: unless-stopped  
   mysql:
-    image: mysql:latest
+    build: ./mysql
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
