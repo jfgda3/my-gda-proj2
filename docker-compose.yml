@@ -43,19 +43,12 @@ services:
       - "3306:3306"
 
   metabase:
-    image: metabase/metabase
+    build: ./metabase
     container_name: metabase
-    environment:
-      - METABASE_DB_TYPE=mysql
-      - METABASE_DB_HOST=<mysql_container_name>
-      - METABASE_DB_PORT=3306
-      - METABASE_DB_USER=<mysql_username>
-      - METABASE_DB_PASS=<mysql_password>
-      - METABASE_SECRET_KEY=<your_secret_key>
     ports:
       - "3000:3000"
     volumes: 
-      - ./metabase/mb_data:/data
+      - metabase-data:/data
 volumes:
   mgdbdata:  
   mysql-data:
