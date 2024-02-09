@@ -1,0 +1,22 @@
+# General Settings
+SITE_URL: "http://localhost:3000"
+EMAILS_ENABLED: false # Disable emails for local development
+LANGUAGE: "en" # Set your preferred language (e.g., "es" for Spanish)
+
+# Database Settings
+METABASE_DB_TYPE: "mysql"
+METABASE_DB_HOST: "mysql" # Replace with your MySQL container name (e.g., "mysql")
+METABASE_DB_PORT: 3306
+METABASE_DB_USER: "<mysql_username>" # Replace with your MySQL username
+METABASE_DB_PASS: "<mysql_password>" # Replace with your MySQL password
+
+# Security Settings
+SESSION_SECRET_KEY: "MyMetabaseKey$123_4711_1234567890" # Replace with a strong random key
+X_FRAME_OPTIONS: "DENY"
+
+# Customization (Optional)
+# BRAND_NAME: "My Awesome Data Platform"
+# BRAND_COLOR: "#007bff"
+
+# Disable tutorial for local development
+ENABLE_TUTORIAL: false
