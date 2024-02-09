@@ -5,7 +5,7 @@
 # EXPOSE 3306
 
 FROM mysql:latest
-
 COPY ./config/my.cnf /etc/mysql/my.cnf
+COPY ./init_db.sql /docker-entrypoint-initdb.d/init.sql
 
 CMD ["mysqld", "-f", "/etc/mysql/my.cnf"]
