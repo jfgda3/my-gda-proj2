@@ -13,12 +13,8 @@ services:
     build: ./data_fetch
     depends_on:
       - mongodb
-    #volumes:
-    #  - .:/app
   etl-app:
     build: ./etl
-   # volumes:
-    #  - ./app:/app
     depends_on:
       - mongodb
       - mysql
@@ -38,7 +34,6 @@ services:
       MYSQL_DATABASE: data_db
     volumes:
       - ./mysql-data:/var/lib/mysql
-      - ./etl/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
     ports:
       - "3306:3306"
 
