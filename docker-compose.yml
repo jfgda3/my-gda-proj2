@@ -1,0 +1,64 @@
+# Docker compose for:
+# - Data Ingestion Container
+# - MongoDB Container
+# Build and execution on local machine (WWSL) with:
+# (1) Set environment variable in Dockerfile:
+#     ENV HTTPS_PROXY=$https_proxy
+# (2) docker-compose build --build-arg "https_proxy=$https_proxy"
+# (3) docker-compose up
+
+version: '3.7'
+services:
+  data-fetch-app:
+    build: ./data_fetch
+    depends_on:
+      - mongodb
+    #volumes:
+    #  - .:/app
+  etl-app:
+    build: ./etl
+   # volumes:
+    #  - ./app:/app
+    depends_on:
+      - mongodb
+      - mysql
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    restart: unless-stopped  
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: dba
+      MYSQL_PASSWORD: "A1YTsqilzHkUQ4"
+      MYSQL_DATABASE: data_db
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./etl/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+      - "3306:3306"
+
+  metabase:
+    image: metabase/metabase
+    container_name: metabase
+    environment:
+      - METABASE_DB_TYPE=mysql
+      - METABASE_DB_HOST=<mysql_container_name>
+      - METABASE_DB_PORT=3306
+      - METABASE_DB_USER=<mysql_username>
+      - METABASE_DB_PASS=<mysql_password>
+      - METABASE_SECRET_KEY=<your_secret_key>
+    ports:
+      - "3000:3000"
+    volumes: 
+      - ./metabase/mb_data:/data
+volumes:
+  mgdbdata:  
+  mysql-data:
+  metabase-data:
